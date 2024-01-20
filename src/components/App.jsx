@@ -5,14 +5,11 @@ import { Filter } from './filter/filter';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm } from './Form/ContactsForm';
 import { ContactsWrap, Container, PhoneWrap } from './App.styled';
+import useLocaStorage from './hooks/useStateLocalStorage';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useLocaStorage('contacts', initialContacts);
   const [filter, setFilter] = useState('');
-  // state = {
-  //   contacts: initialContacts,
-  //   filter: '',
-  // };
 
   const addContacts = newContact => {
     const isContactsExist = contacts.some(
